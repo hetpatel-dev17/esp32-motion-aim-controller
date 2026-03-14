@@ -1,25 +1,40 @@
 # ESP32 Motion Aim Controller
 
-An experimental motion-based aiming controller built with **ESP32 and MPU6050**.
-The device converts **gyroscope rotation into Bluetooth mouse movement**, allowing physical motion to control a cursor.
+An experimental motion-based aiming controller built using **ESP32 and the MPU6050 IMU**.
 
-This project explores **IMU-based human–machine interaction systems**.
+The system converts **gyroscope rotation into Bluetooth mouse movement**, allowing physical device motion to control a cursor.
+
+This project explores **IMU-based human–machine interaction systems and motion filtering techniques**.
 
 ---
 
-# Overview
+# Demo
 
-The system reads **angular velocity from the MPU6050 gyroscope**, processes the signal using filtering techniques, and sends movement data to a computer as a **Bluetooth HID mouse**.
+Prototype demonstration of the motion controller.
 
-The project focuses on **signal processing, sensor calibration, and motion filtering**.
+![Prototype Demo](diagrams/demo.gif)
+
+The video shows the ESP32 motion controller translating physical rotation into cursor movement through Bluetooth HID.
+
+---
+
+# Project Overview
+
+The ESP32 reads angular velocity from the **MPU6050 gyroscope**, processes the signal, and sends movement commands as a **Bluetooth HID mouse**.
+
+The goal of this prototype is to transform **noisy inertial sensor data into stable human-controlled input**.
 
 ---
 
 # Hardware
 
-* ESP32 development board
-* MPU6050 IMU sensor
-* push buttons (planned trigger system)
+• ESP32 development board
+• MPU6050 inertial measurement unit
+
+Future additions:
+
+• trigger buttons
+• vibration feedback
 
 ---
 
@@ -59,7 +74,7 @@ PC Cursor Movement
 
 Current prototype includes:
 
-* Bluetooth HID mouse
+* Bluetooth HID mouse interface
 * Gyroscope offset calibration
 * Deadzone filtering
 * Adjustable sensitivity
@@ -71,9 +86,9 @@ Current prototype includes:
 # Motion Processing Logic
 
 Raw gyroscope signals contain noise and drift.
-The system processes motion using several stages:
+The system processes the signal through multiple stages:
 
-1. Gyroscope sampling
+1. Sensor sampling
 2. Offset calibration
 3. Deadzone filtering
 4. Axis remapping
@@ -81,28 +96,28 @@ The system processes motion using several stages:
 6. Exponential smoothing
 7. BLE mouse output
 
-This pipeline converts **unstable physical sensor signals into stable cursor movement**.
+This pipeline converts **unstable physical signals into smooth cursor movement**.
 
 ---
 
 # Prototype Result
 
-The controller currently operates as a **velocity-based motion controller**.
+The current system behaves as a **velocity-based motion controller**.
 
-This means cursor movement depends on **how fast the device rotates**, rather than the exact direction the device points.
+This means cursor movement depends on **how fast the device rotates**, not where it points.
 
-This behavior is similar to early motion controllers like the Nintendo Wii Remote.
+This approach is similar to early motion systems such as the **Nintendo Wii Remote**.
 
 ---
 
 # Future Improvements
 
-Planned upgrades include:
+Planned upgrades:
 
 * Absolute orientation tracking (BNO055 / MPU9250)
-* 3×3 trigger button matrix
-* improved motion filtering
-* hybrid IMU + optical tracking
+* Button matrix for trigger input
+* Advanced filtering algorithms
+* Hybrid tracking using IMU + optical sensors
 
 ---
 
@@ -110,20 +125,23 @@ Planned upgrades include:
 
 ```
 esp32-motion-aim-controller
-│
-├── firmware
-│   └── motion_controller_v1.ino
-│
-├── docs
-│   ├── system_architecture.md
-│   ├── hardware_setup.md
-│   └── debugging_journal.md
-│
-├── diagrams
-│   └── system_pipeline.png
-│
-└── meta
-    └── ai_usage_disclosure.md
+
+firmware/
+   motion_controller_v1.ino
+
+docs/
+   system_architecture.md
+   hardware_setup.md
+   debugging_journal.md
+
+diagrams/
+   demo.gif
+
+experiments/
+   prototype_v1.md
+
+meta/
+   ai_usage_disclosure.md
 ```
 
 ---
