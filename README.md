@@ -8,7 +8,13 @@ This project explores **IMU-based human–machine interaction systems and motion
 
 ---
 
-# Demo
+## 📺 Live Prototype Demonstration
+
+To see the hardware in action, check out the demo video I’ve uploaded to Instagram. This reel demonstrates the current iteration of the project, focusing on real-world performance and functional testing.
+
+[![Watch Prototype Demo](https://img.shields.io/badge/Instagram-Watch_Reel_Demo-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/reel/DV70GDGjGY7/?igsh=MWVnYmxyOWF6c2F0OA==)
+
+> **Note:** The video covers the integration phase of the prototype. For detailed build logs and circuit diagrams, please refer to the `docs` folder in this repository.
 
 Prototype demonstration of the motion controller.
 
